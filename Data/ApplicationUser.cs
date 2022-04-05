@@ -9,7 +9,7 @@ namespace DependencyInjection_Demo.Data
 
         }
 
-        public DbSet<Student> Students { get; set; }
+        public DbSet<Student> Student { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

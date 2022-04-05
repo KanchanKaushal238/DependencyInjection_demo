@@ -8,10 +8,12 @@ using DependencyInjection_Demo.Infrastructure;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddMvc();
 builder.Services.AddControllersWithViews();
+
 builder.Services.AddDbContext<ApplicationUser>
                 (options => options.UseSqlServer(builder.Configuration.GetConnectionString("MyConnection")));
-builder.Services.AddTransient<IStudentRepo, StudentRepo>();
+builder.Services.AddScoped<IStudentRepo, SqlEmployeeRepository>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

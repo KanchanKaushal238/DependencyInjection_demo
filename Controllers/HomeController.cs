@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using DependencyInjection_Demo.Infrastructure;
+using DependencyInjection_Demo.ViewModels;
 
 namespace DependencyInjection_Demo.Controllers
 {
@@ -14,15 +15,19 @@ namespace DependencyInjection_Demo.Controllers
             _logger = logger;
             _repo = repo;
         }
-
-        public IActionResult Index()
+        [Route("")]
+        [Route("Home")]
+        [Route("Home/Index")]
+        public ViewResult Index()
         {
-            var items = _repo.GetAll();
-            return View(items);
+            var model = _repo.GetAll();
+            return View(model);
         }
-        public IActionResult Details(int id)
+        [Route("Home/Details/{id?}")]
+        public IActionResult Details(int? id)
         {
-            var item = _repo.GetById(id);
+            
+            var item = _repo.GetById(id??1);
             return View(item);
         }
 

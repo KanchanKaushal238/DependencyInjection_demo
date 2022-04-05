@@ -1,34 +1,29 @@
-﻿@model DependencyInjection_Demo.Models.Student
+﻿@model IEnumerable<DependencyInjection_Demo.Models.Student>
+
 @{
-    ViewData["Title"] = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Details of Students";
 }
-
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
-
-
-<div>
-    <h4>Student</h4>
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Id)
-        </dt>
-        <dd class = "col-sm-2">
-            @Html.DisplayFor(model => model.Id)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd class = "col-sm-2">
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
-        <dd class = "col-sm-2">
-            @Html.DisplayFor(model => model.Email)
-        </dd>
-    </dl>
-</div>
+<html>
+    <head>
+        <title></title>
+    </head>
+    <body>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Department</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var stud in Model)
+            {
+                <tr><td> @stud.Id</td><td>@stud.Name</td><td>@stud.Email</td></tr>
+                
+            }
+        </tbody>
+        </table>
+    </body>
+</html>
